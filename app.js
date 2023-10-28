@@ -62,7 +62,7 @@ store.on("error", () => {
 });
 
 const sessionOptions = { 
-  store,
+  store, 
   secret: secret_code,
   resave: false,
   saveUninitialized: true,
