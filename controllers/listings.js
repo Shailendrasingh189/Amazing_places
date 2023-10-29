@@ -29,10 +29,10 @@ module.exports.createListing =  async (req, res) => {
   newListing.owner = req.user._id;
   newListing.image =  { url, filename };
   newListing.geometry = response.body.features[0].geometry;
-  const sListing = await newListing.save();
+  const Listing = await newListing.save();
 
   req.flash("success", " New Listings is created!");
-  console.log(sListing);
+  // console.log(Listing);
   res.redirect("/listings");
 };
 
