@@ -101,11 +101,11 @@
 
       <!-- Show reviews -->
       <% if(listing.reviews.length > 0) { %>
-        <div class="row row-cols-lg-4 row-cols-md-2 row-cols-sm-1">
-          <hr />
+        <hr />
+        <div class="row">
           <h4 class="mb-3"> <b> All Reviews </b> </h4>
           <% for(review of listing.reviews) { %> 
-            <div class="card col- ms-3 mb-3">
+            <div class="card col-md-6 ms-3 mb-3">
               <div class="card-body mb-3 mt-2">
                 <h5 class="card-title">
                   @<%= review.author.username %>
@@ -131,7 +131,7 @@
       <% } %>
     </div>
   </div>
-  <div class="row-cols-lg-4 row-cols-md-2 row-cols-sm-1 offset-1  mb-3 mt-3">
+  <div class="col-8 offset mb-3 mt-3">
     <hr />
     <h3> Where you'll be</h3>
     <div id="map"></div>    
