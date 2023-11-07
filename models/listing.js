@@ -48,8 +48,11 @@ listingSchema.post("findOneAndDelete", async(listing) => {
   }
 });
 
-// const Listing = mongoose.model("Listing", listingSchema, "listings",{
-//   bufferTimeoutMS: 30000,
-// });
 
-module.exports = Listing;
+module.exports = mongoose.model("Listing", listingSchema, "listings",{
+  bufferTimeoutMS: 1000,
+});
+
+
+
+// module.exports = mongoose.model("Listing", listingSchema);

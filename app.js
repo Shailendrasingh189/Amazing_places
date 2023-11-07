@@ -3,7 +3,6 @@ if(process.env.NODE_ENV != "production") {
 }
 
 // console.log(process.env.SECRET);
-
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
@@ -14,10 +13,11 @@ const ExpressError = require("./utils/ExpressError.js");
 const listingRouter = require("./routes/listing.js");
 const reviewRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
+const Listing = require("./models/listing");
 
 
 const session = require("express-session");
-const MongoStore = require('connect-mongo');
+// const MongoStore = require('connect-mongo');
 const flash = require("connect-flash");
 
 
@@ -25,8 +25,11 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./models/user.js");
 
-const dbUrl = process.env.ATLASDB_URL;
+// const dbUrl = process.env.ATLASDB_URL;
 const secret_code = process.env.SECRET;
+
+const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
+
 
 main()
   .then(() => {
@@ -37,7 +40,9 @@ main()
   });
 
 async function main() {
-  await mongoose.connect(dbUrl);  //instance of MONGO_URL
+  // await mongoose.connect(dbUrl);  //instance of MONGO_URL
+  await mongoose.connect(MONGO_URL);  
+
 };
 
 
@@ -49,20 +54,20 @@ app.use(methodOverride("_method"));
 app.engine("ejs", ejsMate);
 app.use(express.static(path.join(__dirname, "/public")));
 
-const store = MongoStore.create({
-  mongoUrl: dbUrl,
-  crypto: {
-    secret: secret_code,
-  },
-  touchAfter: 24*3600,
-});
+// const store = MongoStore.create({
+//   mongoUrl: dbUrl,
+//   crypto: {
+//     secret: secret_code,
+//   },
+//   touchAfter: 24*3600,
+// });
 
-store.on("error", () => {
-  console.log("ERROR in MONGO SESSION STORE", err);
-});
+// store.on("error", () => {
+//   console.log("ERROR in MONGO SESSION STORE", err);
+// });
 
 const sessionOptions = { 
-  store, 
+  // store, 
   secret: secret_code,
   resave: false,
   saveUninitialized: true,
@@ -94,6 +99,12 @@ app.use((req, res, next) => {
   next();
 });
 
+//Home 
+app.get("/", async (req, res) => {
+  const allListings = await Listing.find({});
+  res.render("home.ejs", { allListings});
+  // res.send("root page");
+});
 
 // Listings routes
 app.use("/listings", listingRouter);
@@ -110,7 +121,7 @@ app.all("*", (req, res, next) => {
 
 app.use((err, req, res, next) => {
   let { statusCode = 500, message = "Something went wrong" } = err;
-  res.status(statusCode).render("error.ejs",{ message });
+  res.status(statusCode).render("error.ejs",{ err });
 });
 
 app.listen(8080, () => {
