@@ -1,6 +1,6 @@
  /* Banner */
 .banner {
-    background-image: url("https://res.cloudinary.com/dxssqb6l8/image/upload/v1605294054/young-woman-enjoying-beautiful-scenery-of-lago-di-braies-italy-picjumbo-com_aa0fvw.jpg");
+    background-image: url("https://res.cloudinary.com/dvbewzgrt/image/upload/v1699376903/aftxdkvzjxq6uqmhph3j.webp");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -55,12 +55,10 @@
     align-items: center;
     background-color: rgba(255, 255, 255, 0.2);
     border-radius: 5px;
-    width: 70%;
+    width: 30%;
     padding: 1% 2%;
 }
 
-.banner-text-item input,
-.banner-text-item .date,
 .banner-text-item .book {
     padding: 15px;
     margin-right: 10px;
@@ -69,16 +67,6 @@
     border-radius: 5px;
     outline: 0;
     border: none;
-}
-
-.banner-text-item input {
-    width: 50%;
-    flex: 2;
-}
-
-.banner-text-item .date {
-    width: 20%;
-    flex: 1;
 }
 
 .banner-text-item .book {
@@ -92,7 +80,7 @@
     text-transform: uppercase;
     padding: 15px;
     cursor: pointer;
-    background-color: #FDE02F;
+    background-color: #e8e6d8cd;
     font-size: 16px;
     font-weight: normal;
     font-family: "Barlow Condensed";

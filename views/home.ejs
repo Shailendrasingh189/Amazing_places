@@ -7,18 +7,7 @@
             <h1>Find your Next tour!</h1>
         </div>
         <form class="form">
-            <input type="text" list="mylist" placeholder="Where would you like to go?">
-            <datalist id="mylist">
-                <option>London</option>
-                <option>Canada</option>
-                <option>Monaco</option>
-                <option>France</option>
-                <option>Japan</option>
-                <option>Switzerland</option>
-                <option>Seoul</option>
-            </datalist>
-            <input type="date" class="date">
-            <a href="#" class="book">book</a>
+            <a href="/listings" class="book">Click to explore Place</a>
         </form>
     </div>
 </section>
@@ -50,109 +39,22 @@
         <h2>Favourite Places</h2>
     </div>
 
-    <!-- <div class="home_cards">
-        <div class="home_card">
-            <div class="zoom-img">
-                <div class="img-home_card">
-                    <img src="https://res.cloudinary.com/dxssqb6l8/image/upload/v1605293736/james-wheeler_xqmq2y.jpg">
-                </div>
-            </div>
-
-            <div class="text">
-                <h2>The Dark Forest Adventure</h2>
-                <p class="cost">$1870 / Per Person</p>
-                
-            </div>
-
-        </div>
-        <div class="home_card">
-            <div class="zoom-img">
-                <div class="img-home_card">
-                    <img src="https://res.cloudinary.com/dxssqb6l8/image/upload/v1605293755/paris_uj8wum.jpg">
-                </div>
-            </div>
-
-            <div class="text">
-                <h2>The Dark Forest Adventure</h2>
-                <p class="cost">$1870 / Per Person</p>
-            </div>
-
-        </div>
-        <div class="home_card">
-            <div class="zoom-img">
-                <div class="img-home_card">
-                    <img src="https://res.cloudinary.com/dxssqb6l8/image/upload/v1605293955/monaco_usu7xb.jpg">
-                </div>
-            </div>
-
-            <div class="text">
-                <h2>The Dark Forest Adventure</h2>
-                <p class="cost">
-                    $1870 / Per Person
-                </p>
-            </div>
-        </div>
-        <div class="home_card">
-            <div class="zoom-img">
-                <div class="img-home_card">
-                    <img src="https://res.cloudinary.com/dxssqb6l8/image/upload/v1605293874/switzerland_tubxcm.jpg">
-                </div>
-            </div>
-
-            <div class="text">
-                <span class="rating">&#11088;&#11088;&#11088;&#11088;&#11088;</span>
-                <h2>The Dark Forest Adventure</h2>
-                <p class="cost">$1870 / Per Person
-                </p>
-            </div>
-
-        </div>
-        <div class="home_card">
-            <div class="zoom-img">
-                <div class="img-home_card">
-                    <img src="https://res.cloudinary.com/dxssqb6l8/image/upload/v1605293673/korea_bxrcj5.jpg">
-                </div>
-            </div>
-
-            <div class="text">
-                <h2>The Dark Forest Adventure</h2>
-                <p class="cost">$1870 / Per Person</p>
-            </div>
-
-        </div>
-        <div class="home_card">
-            <div class="zoom-img">
-                <div class="img-home_card">
-                    <img src="https://res.cloudinary.com/dxssqb6l8/image/upload/v1605293673/night-4336403_1920_demehp.jpg">
-                </div>
-            </div>
-
-            <div class="text">
-                <h2>The Dark Forest Adventure</h2>
-                <p class="cost">$1870 / Per Person</p>
-            </div>
-        </div> -->
-
         <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-2" >
   <% for(let listing of allListings) { %>
-    <a class="listing-link" href="/listings/<%= listing._id %>">
       <div class="card col listing-card" >
         <img 
         src="<%= listing.image.url %>" 
         class="card-img-top" alt="Listing_image" 
         style="height: 20rem;"
         />
-        <div class="card-img-overlay"></div>
         <div class="card-body">
           <p class="card-text"> 
             <b> <%= listing.title %> </b> <br />
             &#8377; <%= listing.price.toLocaleString("en-IN") %> / night 
-            <i class="tax-info">&nbsp;  +18% GST</i>
           </p>
           
         </div>
       </div>
-    </a>
   <% } %>
 </div>
     </div>

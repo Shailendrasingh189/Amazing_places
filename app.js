@@ -2,7 +2,6 @@ if(process.env.NODE_ENV != "production") {
   require('dotenv').config();
 }
 
-// console.log(process.env.SECRET);
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
@@ -27,8 +26,6 @@ const User = require("./models/user.js");
 
 const dbUrl = process.env.ATLASDB_URL;
 const secret_code = process.env.SECRET;
-
-const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
 
 
 main()
@@ -66,7 +63,7 @@ store.on("error", () => {
 });
 
 const sessionOptions = { 
-  // store, 
+  store, 
   secret: secret_code,
   resave: false,
   saveUninitialized: true,
